@@ -10,6 +10,53 @@ There are two definitions to define a group.
 \end{example}
 \begin{example}
 	Consider the rotation of a icosahedron, we are able to obtain a group of order $60$.
+	\tdplotsetmaincoords{60}{100}
+	\begin{center}
+	    \begin{tikzpicture}
+	    	[tdplot_main_coords,scale=1,line join=round]
+	    \pgfmathsetmacro\a{2}
+	    \pgfmathsetmacro{\phi}{\a*(1+sqrt(5))/2}
+	    \path 
+	    coordinate(A) at (0,\phi,\a)
+	    coordinate(B) at (0,\phi,-\a)
+	    coordinate(C) at (0,-\phi,\a)
+	    coordinate(D) at (0,-\phi,-\a)
+	    coordinate(E) at (\a,0,\phi)
+	    coordinate(F) at (\a,0,-\phi)
+	    coordinate(G) at (-\a,0,\phi)
+	    coordinate(H) at (-\a,0,-\phi)
+	    coordinate(I) at (\phi,\a,0)
+	    coordinate(J) at (\phi,-\a,0)
+	    coordinate(K) at (-\phi,\a,0)
+	    coordinate(L) at (-\phi,-\a,0); 
+	    \draw[dashed, thick]    (B) -- (H) -- (F) 
+	    (D) -- (L) -- (H) --cycle 
+	    (K) -- (L) -- (H) --cycle
+	    (K) -- (L) -- (G) --cycle
+	    (C) -- (L) (B)--(K) (A)--(K)
+	    ;
+
+	        \draw[ultra thick]
+	        (A) -- (I) -- (B) --cycle 
+	        (F) -- (I) -- (B) --cycle 
+	        (F) -- (I) -- (J) --cycle
+	        (F) -- (D) -- (J) --cycle
+	        (C) -- (D) -- (J) --cycle
+	        (C) -- (E) -- (J) --cycle
+	        (I) -- (E) -- (J) --cycle
+	        (I) -- (E) -- (A) --cycle
+	        (G) -- (E) -- (A) --cycle
+	        (G) -- (E) -- (C) --cycle
+	        ; 
+			 %\foreach \point/\position in {A/right,B/below,C/above,D/left,E/{above right},F/below,G/above,H/left,I/below,J/right,K/below,L/left}
+			%{
+			    %\fill (\point) circle (1.5pt);
+			    %\node[\position=3pt] at (\point) {$\point$};
+			%}
+
+\end{tikzpicture} \\
+Image of a Icosahedron
+\end{center}
 \end{example}
 \begin{example}
 	Let $V$ be a $n$-dimensional over $\b R$. The general linear group $GL_n(\b R)$, all matrices with $\det \neq 0$ from a group. 
@@ -30,6 +77,7 @@ There are two definitions to define a group.
 \begin{example}
 	Let $G$ be the icosahedron group and let $S$ be the icosahedron.
 \end{example}
+
 \begin{question}
 	How does $G$ acts on $G$?
 \end{question}
@@ -68,10 +116,10 @@ Extra structure is \textbf{right} action of $G$ on $S$. We now have 3 copies of 
 		\draw[color = red, ultra thick] (-4,-4)--(-4,-3)--(-3,-3)--(-3,-4)--(-4,-4);
 		\draw[color = magenta, ultra thick] (4,-4)--(4,-3)--(3,-3)--(3,-4)--(4,-4);
 		\draw[ultra thick] (-4,4)--(-4,3)--(-3,3)--(-3,4)--(-4,4);
-		\draw[->] (3.5,4.5) arc (270:600:0.5);
-		\draw[->] (-3.5,4.5) arc (270:600:0.5);
-		\draw[->] (3.5,-5.5) arc (270:600:0.5);
-		\draw[->] (-3.5,-5.5) arc (270:600:0.5);
+		\draw[->] (3.5,3.25) arc (270:600:0.25);
+		\draw[->] (-3.5,3.25) arc (270:600:0.25);
+		\draw[->] (3.5,-3.75) arc (270:600:0.25);
+		\draw[->] (-3.5,-3.75) arc (270:600:0.25);
 		\draw[<->, color = blue] (4.2,3) -- (4.2,4);
 		\draw[<->, color = blue] (2.8,3) -- (2.8,4);
 		\draw[<->, color = red] (-4,-2.8) -- (-3,-2.8);
@@ -179,8 +227,7 @@ Extra structure is \textbf{right} action of $G$ on $S$. We now have 3 copies of 
 		\item Order prime $p$ : Integer $\mod p$.
 		\item Order 4 : Cyclic group $\b Z/4 \b Z$ and symmetry of a rectangle. These are not isomorphic as the symmetry group of rectangle does not have a element of order $4$. 
 
-		\item Classify all groups with $g^2 = 1$ for all $g$. Group is abelian. $gh = hg$. This follows because $ghgh = (gh)^2 = 1 = h^2g^2 = hhgg \implies hg = gh$.
-		 Since $G$ is abelian, we can write group operation. Notice that $G$ is a vector space over field of order $2$, namely $\b Z/2 \b Z$. so $h$ has a basis, and is isomorphic to $\left( \b Z/2\b Z\right)^n$($n$-dimensional vector space) to some $n$. So only $1$ other group of order $4$.
+		\item Classify all groups with $g^2 = 1$ for all $g$. We want to show that group is abelian, or $gh = hg$ for all $g,h \in G$. This follows because $ghgh = (gh)^2 = 1 = h^2g^2 = hhgg \implies hg = gh$.		 Since $G$ is abelian, we can write group operation as $+$. Notice that $G$ is a vector space over field of order $2$, namely $\b Z/2 \b Z$. so $h$ has a basis, and is isomorphic to $\left( \b Z/2\b Z\right)^n$($n$-dimensional vector space) to some $n$. So there is only $1$ other group of order $4$.
 	\end{enumerate}
 \end{example}
 \begin{definition}
