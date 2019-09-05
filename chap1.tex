@@ -383,3 +383,134 @@ Suppose $a$ is a generator of $\b Z/ 4 \b Z$. Pick $b \in G$ so image of $b$ is 
 	\[ 1 \longrightarrow \b Z/ 2 \b Z \longrightarrow S^3 \longrightarrow GL_3(\b R) \longrightarrow 1\]
 	And quaternion and significantly faster than $3 \times 3$ matrices.
 \end{remark}
+\begin{remark}
+	There is only five groups of order $8$, namely $D_8, Q_8, \b Z /8 \b Z,\b Z/ 4 \b Z \times \b Z/ 2 \b Z , \b Z/ 2 \b Z \times \b Z/ 2 \b Z \b Z/ 2 \b Z$.
+\end{remark}
+\begin{problem}
+	How many ways to arrange 8 rook on chessboard so no rooks attack each other?
+\end{problem}
+\begin{answer}
+	Notice that the first row has 8 choices, second row has 7 choices, etc, etc -- a totalof $8!$ ways.
+\end{answer}
+\begin{problem}
+	How many ways up to symmetry?
+\end{problem}
+\begin{answer}
+	Clearly the symmetry of the chessboard is isomorphic to $D_8$. First guess is
+	\[ \frac{8!}{8}\]
+	But this is not right! There is some arrangement that have less than $8$ symmetries.
+\end{answer}
+\begin{theorem}[Burnside's Theorem]
+	Suppose group $G$ acts on set $S$, then $\#$ orbit is equal to the number of fixed points, namely 
+	\[ \frac{1}{|G|} \sum_{a \in G} |S^g|\]
+	where $S^g$ is the point fixed by $g$.
+\end{theorem}
+\begin{remark}
+	For this problem, $G = D_8, S = $ all ways to arrange $8$ rooks.
+\end{remark}
+\begin{proof}
+	Cont the set of pairs $(g,s)$ with $g(s) = s$. \\
+	Method 1: For each $g$ there are $|S^g|$ possible value of $S$. so we get a total of 
+	\[ \sum_{g \in G} |S^g|\]
+
+	Method 2: Look at each orbit of $G$ on $S$. Pick some $s$ in orbit, $\#$ of possible element of $G =$ $\#$ of elements of $G$ fixing $S$, which forms a subgroup $H$ of $G$. 
+
+	So the total number of pairs = $\#$ elements of orbit $\times$ size of subgroup fixing one element. so altogether we get $\#$ orbit$\times |G| = \sum_{g \in G} |S^g|$. 
+\end{proof}
+\begin{remark}
+	$G$ might have might have many elements. Instead of summing every elements. We can just sum over the conjugacy classes.
+\end{remark}
+\begin{definition}[Informal Definition]
+	two elements of $G$ is called \textbf{conjugate} if they sort of look the same.
+\end{definition}
+\begin{example}
+	Let $G$ be the rotation of the cube. We then can classify them
+	\begin{enumerate}
+		\item Trivial rotation
+		\item Spin around $2$ opposite corners. spin by $1/3$ rotation. (8)
+		\item Spin by $1/2$ revolution fixing $2$ opposite edges. (6)
+		\item Rotate by $1/4$ by the center of face. (4)
+		\item Rotate by axis for $1/2$ revolution. (3)
+	\end{enumerate}
+\end{example}
+\begin{definition}
+	$a,b$ are called \textbf{conjugate} if $a = gbg^{-1}$ for some $g \in G$.This equivalence relation forms equivalence classes called \textbf{conjugacy classes}. 
+\end{definition}
+\begin{proposition}
+	If $a,b \in G$ are conjugate, then $a,b$ have the same number of fixed points.
+\end{proposition}
+\begin{proof}
+	If $gag^{-1} = b$. Then $g$ takes fixed points of $a$ to fixed points of $b$. We have
+	\[ as = s \implies (gag^{-1})gs = gs\]
+	so $b$ fixes $(gs)$.
+\end{proof}
+Let $c_n$ denote the number of ways to arrange $n$ rooks on $n \times n$ board symmetric under reflection of diagonal corners. We have the recurrence relationship
+\[ C_n = C_{n-1} + (n-1) C_{n-2}\]
+For $n = 8$ this gives us $C_n = 764$. 
+
+
+We now go back to find the conjugacy classes of $D_8$
+\begin{enumerate}
+	\item Trivial ($8! = 40320$)
+	\item Reflection by diagonal corners. ($764$)
+	\item Rotation by $90^\circ$. ($6 \times 2$)
+	\item Flip by axis. $(0)$
+	\item Rotation by $180^\circ$. ($8 \times 6 \times 4 \times 2$)
+\end{enumerate}
+Adding them all of gives us $5282$ ways.
+\begin{remark}
+	For large number of groups, having conjugacy classes reduce significant amount of time.
+\end{remark}
+\begin{remark}
+	To count number of orbits we can cheat : weight each element $s$ in $S$ by $\frac{1}{|H|}$, where $H$ is the group elements fixing $s$.
+	weighted number of orbits is $\frac{|S|}{|G|}$.
+\end{remark}
+Let consider groups of order $9$. Which is kind of boring. Then let's classify order $p^2$.
+\begin{definition}
+	The \textbf{center} of $G$ is 
+	\[ Z(G) = \left\{ z \in G : zg = gz \quad \forall g \in G \right\}\]
+\end{definition}
+\begin{theorem}
+	If $G$ has prime power order, $p^n > 1$, then the center of $G$ is nontrivial.
+\end{theorem}
+\begin{example}
+	$S_3$ has trivial center.
+\end{example}
+\begin{proof}
+	Look at adjoint action of $G$ on $G$, where $g(s) = gsg^{-1}$. Then the orbits is equal to conjugacy classes. Suppose $s \in G$. We have two cases
+	\begin{enumerate}
+		\item orbit of $s$ has size $1$. Then clearly $s \in Z(G)$.
+		\item Orbit has size $1$, then size must be $p^k$ for some $k \geq 1$.
+	\end{enumerate}
+	Therefore we have
+	\[ |\mathrm{center}| = |G| - \sum |\text{orbits of size $> 1$}|\]
+	Since the right hand side is divisible by $p$, the left hand side must also be divisible $p$, since $|\mathrm{center}| \geq 1$, it must be nontrivial.
+\end{proof}
+\begin{lemma}
+	Suppose $G$ is group, let $Z$ be the center of $G$. If $G/Z$ is cyclic then $G = Z$ so $G$ is abelian.
+\end{lemma}
+\begin{proof}
+	Suppose $g$ is element of $G$ whose image generates $G/Z$. Any two elements of the form $z_1g^{n_1}, z_2g^{n_2}$ commutes. 
+\end{proof}
+Therefore any group of order $p^2$ has center of order $p$ or $p^2$.  Suppose $G$ has order $p^2$. If center $Z$ has order $p$, then $|G/Z| = p$, and must be cyclic by previous works. Therefore any group of order $p^2$ is abelian. We have two cases now \begin{enumerate}
+	\item $G$ has element of order $p^2$. 
+	\item All elements satisfy $g^p = 1$. Then $G$ (additively forms a vector space over of $\b F$), therefore $G = \b Z/ p \b Z \times \b Z/ p \b Z$.
+\end{enumerate}
+\begin{example}
+	Groups of order $10$, by previous class notice that it's of the form $2p$. Therefore the only possibilities are $\b Z/ 5 \b Z \times \b Z/ 2 \b Z $ or $D_{10} = (\b Z/ 5 \b Z ) \rtimes (\b Z/ 2 \b Z )$.
+\end{example}
+Recalled tat $D_{2n}$ is the symmetries of $n$-gon.
+Notice that $D_{2n}$ is generated by $a,b$ of order$2$. 
+If a group is generated by $a,b$ with $a^2 = 1, b^2 = 1, (ab)^n = 1$. Then $G$ is a quotient of dihedral of $D_{2n}$. all elements of $g$ forms a finite sequence of $a,b$ :
+\[ g = ababbaabbababa\]
+\begin{proposition}
+	Any element $(a,b)$ with $a^2 = b^2 = 1$ is a dihedral group.
+\end{proposition}
+\begin{corollary}
+	Suppose $a,b \in G$ for a finite group $G$, $a^2 = b^2 = 1$. 
+	Then either $a$ is conjugated to $b$ or there is some $c \neq 1, ca = ac, cb = bc$. 
+	Look at $H$ generated by $a,b$, which is dihedral, so $D_{4n}$ or $D_{4n + 2}$.
+\end{corollary}
+\begin{theorem}
+	There is five different groups of order $5$ up to isomorphism: $\b Z/ 12 \b Z, (\b Z/ 2 \b Z)^2 \times \b Z/ 3 \b Z, D_{12}, A_{4}, \b Z/ 3 \b Z \rtimes \b Z/ 4 \b Z $
+\end{theorem}
