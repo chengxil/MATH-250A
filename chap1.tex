@@ -1,6 +1,5 @@
 %!TEX root = ./main.tex
 \section{Groups}
-\subsection{Groups}
 There are two definitions to define a group.
 \begin{definition}[Concrete definition]
 	A group is a symmetries of something 1:1 map preserving ``structure''.
@@ -176,7 +175,7 @@ Extra structure is \textbf{right} action of $G$ on $S$. We now have 3 copies of 
 \end{example}
 \begin{example}
 	Consider the function :
-	\[ \mathrm{det} : GL_n(R) = \b R^*\]
+	\[ \mathrm{det} : GL_n(\b R) = \b R^*\]
 	is a homomorphism.
 
 	kernel = $SL_n(\b R)$ = special linear group.
@@ -189,7 +188,7 @@ Extra structure is \textbf{right} action of $G$ on $S$. We now have 3 copies of 
 \end{lemma}
 \begin{proof}
     If $aH \cap bH = \varnothing$, then the proof is done. \\
-    Now we suppose $aH \cap bH \neq \varnothing$, then we know that $ah_1 = bh_2$ for some element in $aH$ and $bH$. We compute $ah_1 = bh_2 \implies h_1 = a^{-1}bh_2 \implies a^{-1}b = h_1h_2^{-1} \implies a^{-1}b \in H$. By proposition 1 we know that $aH = bH$. \\
+    Now we suppose $aH \cap bH \neq \varnothing$, then we know that $ah_1 = bh_2$ for some element in $aH$ and $bH$. We compute $ah_1 = bh_2 \implies h_1 = a^{-1}bh_2 \implies a^{-1}b = h_1h_2^{-1} \implies a^{-1}b \in H$. Then we know that $aH = bH$. \\
     We can use a similar argument to show that this works for the right cosets as well. This is left as an exercises to the reader. 
 \end{proof}
 \begin{lemma}
@@ -246,5 +245,141 @@ Extra structure is \textbf{right} action of $G$ on $S$. We now have 3 copies of 
 	The product(sum) of groups are elements $(g_1, g_2, \ldots)$ such that all but finite number of $g_i$ are trivial.
 \end{definition}
 \begin{example}
-	$\b Q^* = $ infinite sum of groups $\b Z/2 \b Z \times \b Z /3 \b Z \times \b Z /5 \b Z \times \ldots$. This follows by fundamental theorem of arithmetic.
+	$\b Q^* = $ infinite sum of groups $\b Z/2 \b Z + \b Z /3 \b Z + \b Z /5 \b Z + \ldots$. This follows by fundamental theorem of arithmetic.
 \end{example}
+\begin{exercise}
+	Find graph whose symmetry group is $\b Z/5 \b Z$.
+\end{exercise}
+\begin{example}
+	groups of order $6$: the symmetries of triangles and the cyclic group $\b Z/6\b Z$ and the product of the groups $\b Z/2 \b Z \times \b Z/3\b Z$. But there is a direct isomorphism between $\b Z_6$ and $\b Z/2 \b Z \times \b Z/\b Z_3$, namely 
+	\[ \phi: 1 \mapsto (1,1)\]
+\end{example}
+\begin{remark}
+	Similarly, $\b Z/m \b Z \times \b Z/n \b Z \cong \b Z/ mn \b Z$, where $m,n$ are coprime. This is also the Chinese remainder theorem.
+\end{remark}
+\begin{definition}
+	$S_n$ is the symmetry group, the set of all permutations of $\{1,2 \ldots, n\}$.
+\end{definition}
+\begin{example}
+	Symmetries of a triangle is isomorphic to $S_3$.
+\end{example}
+\begin{proposition}
+	$S_3$ is non-abelian.
+\end{proposition}
+\begin{proof}
+	Note that $(12)(23) = (123)$ and $(23)(12) = (132)$.
+\end{proof}
+\begin{question}
+	Suppose $H$ is a subgroup of $G$. Let $G/H$ be the left cosets $aH$ of $H$ for $a \in G$. Is $G/H$ a group?
+\end{question}
+\begin{answer}
+	Define $(aH)(bH) := abH$ and $ah_1bh_2 \equiv ab \pmod H$.
+\end{answer}
+\begin{problem}
+	This need not be well-defined, and the groups needs to be abelian.
+\end{problem}
+
+\begin{answer}
+	We want to know if $aHbH = abH$. This holds true if $Hb = bH$, or the left and right cosets are equal. Equivalently, we can see that $bHb^{-1} = H$. Therefore $G/H$ is a group if the left cosets are right cosets.
+\end{answer}
+\begin{definition}
+	$H$ is a \textbf{normal} subgroup of $G$ if $gHg^{-1} = H$ for all $g \in G$.
+\end{definition}
+\begin{example}
+	Consider $S_3$ and the subgroup $H := \left\{ \b I, (12) \right\}$. The left cosets are
+	\[ H, (23)H, (132)H \]
+	the right cosets are
+	\[ H, H(23), H(132)\]
+	we will run into trouble if we try to make a group from $G/H$
+\end{example}
+\begin{remark}
+	There is a clever bijection from left cosets to right cosets, namely
+	\[ \phi : aH \to Ha^{-1} \]
+	Therefore the number of right cosets is equal to the right cosets.
+\end{remark}
+\begin{definition}
+	The index of $H$ in $G$, denoted as $|G:H|$, is the number of left/right cosets of $H$ in $G$.
+\end{definition}
+\begin{remark}
+	Do not define $|G:H|$ as $\frac{|G|}{|H|}$ as $|H|$ might be $\infty$. For example $|2 \b Z| = \infty$.
+\end{remark}
+\begin{theorem}[Cayley's Theorem]
+	Suppose $d$ divides $|G|$, then $G$ has a element of order $d$ if $d$ is prime.
+\end{theorem}
+\begin{proof}
+	First we consider the abelian case. Pick an element $g \in G$ of prime order $q$. If $q = p$, then we are done. if $q \neq p$. Look at $G/\langle g \rangle$ of order $|G|/q$, which is divisible by $p$. So $G/<g>$ has element $a$ of order $p$ by induction. put $b$ to be the element of $G$ whose image is $a$. 
+
+	Second we consider nonabelian case. Look at the \textbf{adjoint action} of $G$ on \textbf{itself}, 
+	\[ g(h) = ghg^{-1} \qquad \text{ conjugate at $h$ by $g$} \]
+	Split up $G$ into orbits $h_1, h_2$ in some orbit if $g(h_1)= h_2$ for some $g$. Then \[\text{the number of orbits of } h = \frac{\text{order of $h$}}{\text{subgroup fixing $h$}}\] If the denominator is less than $G$, then we can assume that this is not divisible by $p$, otherwise it has element of order $p$ by induction. 
+
+	We can assume each conjugacy class is either of size divisible by $p$ or contains just one element in the center of the group, which commutes with every elements in the group. 
+
+	Then the number of elements on center is equal to the order of $G$ therefore it has elements of order $p$ by the abelian case.
+
+\end{proof}
+\begin{definition}
+	Orbit
+\end{definition}
+\begin{example}
+	Let $G := S_3$. The orbit of $G$ are
+	\[ \left\{ \b I \right\}, \left\{ (12), (23), (31) \right\}, \left\{ (123), (132) \right\}\]
+\end{example}
+\begin{example}
+	Take $H_1 = \left\{ \b I, (123), (132) \right\}, H_2 = \left\{ I, (12) \right\} \subseteq S_3$. Let $S_3 = H_1H_2$ but $S_3 \neq H_1 \times H_2$ since $H_1, H_2$ does not commute. $H_1$ is normal as it's index $2$, therefore we only have two cosets $H_1,aH_1$ where $a \not\in H_1$. We then get the action of $H_2$ on $H_1$ by
+	\[ g(h) = ghg^{-1} \qquad h \in H_1, g \in H_2\]
+\end{example}
+\begin{question}
+	Suppose given any groups $A,B$, actions of $B$ on $A$. Can we form a group containing $A,B$ so this action is given by conjugation?
+\end{question}
+\begin{answer}
+	Yes. Consider the set $A \times B$
+	\[ (a_1, b_1) \times (a_2, b_2) = (a_1 \, b_1(a_2), b_1b_2)\]
+	This is the \textbf{semi-direct product of} $A,B$, denoted as
+	\[ A \rtimes B.\]
+\end{answer}
+Now we can classify group of order $6$. By cayley, we now have elements $g$ of order $3$ and $h$ of order $2$. Let $A = \langle g \rangle, B = \langle h \rangle$. Notice that $A$ is normal in $G$ since it has index $2$. so $B$ acts on $A$ by conjugation. as we get two actions
+\[ ghg^{-1} = h, ghg^{-1} = h^{-1}\]  
+Therefore there is only two groups of order $6$, the abelian one and the nonabelian one.
+\begin{remark}
+	This applies to groups of order $2p$, where $p$ is a prime.
+\end{remark}
+Now consider groups of order $8$:
+
+Case 1: all elements has order 2, then the group is isomorphic to $\left(\b Z/ 2 \b Z \right)^3$
+
+Case 2: Some element $g$ has order $4$. Then take $A = \langle g \rangle$. $G/A$ has order $2$, so $A$ is normal so it's ismorphic to $\b Z/ 2 \b Z$. We obtain
+\[ 1 \longrightarrow \b Z/ 4 \b Z \longrightarrow G \longrightarrow \b Z/ 2 \b Z \longrightarrow 1\]
+\begin{problem}
+	Given $A,B$ and action of $B$ on $A$, what is $G$.
+\end{problem}
+\begin{answer}
+	We can have $A \times B, A \rtimes B$ or something else.
+	\[ 1 \longrightarrow \b Z/ 4 \b Z \longrightarrow G \longrightarrow \b Z/ 2 \b Z \longrightarrow 1\]
+	\[ 1 \longrightarrow \left( \b Z/ 2 \b Z \right)^2  \longrightarrow G \longrightarrow \b Z/ 2 \b Z \longrightarrow 1\]
+	If $G$ is a product of the group then it's called a split exact sequence, otherwise it's called a non-split exact sequence.
+\end{answer}
+Take \[ 1 \longrightarrow  \b Z/ 4 \b Z   \longrightarrow G \longrightarrow \b Z/ 2 \b Z \longrightarrow 1\]
+One possible $g$ is $\b Z/ 4 \b Z \rtimes \b Z/ 2 \b Z $
+Suppose $a$ is a generator of $\b Z/ 4 \b Z$. Pick $b \in G$ so image of $b$ is nontrivial in $\b Z/ 2 \b Z $ . We know $b^2 \in \b Z/ 4 \b Z$. If $b^2 = 1,a,a^2,a^3$. We also know $bab^{-1}$ is a generator of $\b Z/ 4 \b Z$ so $bab^{-1} = a$ or $a^3$. Then we have the following table 
+
+
+\begin{center}
+	\begin{tabular}{c|c|c}
+	$b^2 = $ & $bab^{-1} = a$ & $bab^{-1} = a^{3}$ \\
+	\hline
+	Splits & $\b Z/ 2 \b Z \times \b Z/ 4 \b Z$ & $\b Z/ 4 \b Z \rtimes \b Z/ 2 \b Z = D_4$ \\
+	$a$ & $\b Z/ 8 \b Z$ & group collapses \\
+	$a^2$ & $\b Z/ 2 \b Z \times \b Z/ 4 \b Z$. & $Q_8$ \\
+	$a^3$ changes to $a^{-1}$ & $D_4$ & $\b Z/ 2 \b Z \times \b Z/ 4 \b Z $
+\end{tabular}
+\end{center}
+\begin{remark}
+	$\b R^* \supseteq S^0, \b C^* \supseteq S^1, \b H^* \supseteq S^3$, where $S^n$ are $n$-dimensional spheres.
+\end{remark}
+\begin{remark}[Digression on video games]
+	Let $S^3$ acts on $\b R^3$ by conjugation
+	\[g(v) = gvg^{-1}\] which gives gives a rotation of $\b R^3$. And we obtain the homomorphism
+	\[ 1 \longrightarrow \b Z/ 2 \b Z \longrightarrow S^3 \longrightarrow GL_3(\b R) \longrightarrow 1\]
+	And quaternion and significantly faster than $3 \times 3$ matrices.
+\end{remark}
