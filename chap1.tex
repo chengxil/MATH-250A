@@ -641,3 +641,102 @@ One is a wreath product $\b Z/ 3 \b Z \wr \b Z/ 2 \b Z $.
 	We want to construct some \textbf{large} groups of order $p^n$ for $n$ large. Consider
 	\[ 1 \to A \to G \to B \to 1\]
 \end{example}
+\begin{example}
+	A category has ``objects'' and ``morphism''
+	\begin{center}
+		\begin{tabular}{c|c}
+		object & morphism \\
+		\hline 
+		sets & functions \\
+		topological spaces & continuous functions \\
+		groups & homomorphism of groups \\
+		rings & homomorphism of rings
+	\end{tabular}
+	\end{center}
+\end{example}
+\begin{definition}
+	For $2$ objects, we have set of morphisms $\mathrm{Mor}(a,b)$ and we have the following axioms
+	\begin{enumerate}
+		\item For each object $a$ there is an identity morphism from $a$ to $b$.
+		\item If $f$ is a morphism from $a$ to $b$, $g$ is a morphism from $b$ to $c$, then we are given $gf$, a morphism from $a$ to $c$.
+		\item If $f$ is a morphism between $a$ to $b$, $f|_a = f = |_bf$.
+		\item Associative when defined. $(fg)h = f(gh)$.
+	\end{enumerate}
+\end{definition}
+\begin{example}
+	We want to define everything in terms of morphism. 
+
+	Let's consider some sets. We know that a function is either injective or surjective. Then for function $f : a \to b$ is injective is equivalent as whenever $g,h$ are maps if we have
+	\[ c \stackrel{g}{\to} a \stackrel{f}{\to} b \quad \mathrm{and} \quad c \stackrel{h}{\to} a \stackrel{f}{\to} b\]
+	such that $fg = fh$, then $g = h$. \\
+	Similarly, for surjective whenever $g,h$ are maps from $b \to c$ and we have
+	\[ a \stackrel{f}{\to} b \stackrel{g}{\to} c \quad \mathrm{and} \quad a \stackrel{f}{\to} b \stackrel{h}{\to} c\]
+	If $gf = hf$ implies $g = h$ then $f$ is surjective.
+\end{example}
+\begin{remark}
+	Do not confuse epimorphisms with with surjective functions.
+\end{remark}
+\begin{example}
+	Look at the category of rings
+	\[ \b Z \to \b Q \stackrel \to \to \b R\]
+	 is not surjective but is is an epimorphism.
+\end{example}
+\begin{example}
+	Let $C$ be the color of planar graph. Then the $4$ color theorem is equivalent to saying every epimorphism is surjective.
+\end{example}
+\begin{definition}
+	Suppose $C,D$ are categories, a \textit{Functor} $\c F$ from $C$ to $D$ consists of 
+	\begin{enumerate}
+		\item Function $\c F$ from object of $C$ to object to $D$.
+		\item If $a,b$ are objects, we are given function from $\mathrm{Mor}(a,b)$ to $\mathrm{Mor}(\c F(a),\c F(b))$
+		\item Preserves composition and identities.
+	\end{enumerate}
+\end{definition}
+\begin{example}
+	Dual vector space $V$ over a field $\b K$. Let $
+	\c F(V) = V^*$ to be a functor, suppose we have a map from $V \to W$, then we get a map from $W^* \to V^*$. 
+\end{example}
+\begin{remark}
+	Observe that a contravariant functor from $C$ to $D$ is equivalent to the covariant function from $C$ to the dual of $D$.
+\end{remark}
+\begin{example}[Doubtful Examples]
+	Category of all categories. Let objects to be Categories and morphisms to be functions from $C$ to $D$. Notice that this actually doesn't exists, similar to the set of all sets.
+\end{example}
+\begin{proof}
+	Found Solutions
+	\begin{enumerate}
+		\item Put a bound on cardinalities.
+		\item Work with ``class theories''
+		\item Grothendieck Universes
+		\item IGNORE PROBLEM altogether.
+	\end{enumerate}
+\end{proof} 
+\begin{definition}
+	A \textit{product} $a \times b$ is object with morphism 
+	\begin{center}
+		\xymatrix{
+	A \times B \ar[d] \ar[r] & B \\
+	A }
+	\end{center}
+	which is universal with this properties.
+\end{definition}
+\begin{remark}
+	product is not unique but it is unique up to isomorphism.
+\end{remark}
+\begin{definition}
+	Given $a,b$ a \textit{coproduct} $a \sqcup b$ has morphisms
+	\begin{center}
+		\xymatrix{
+		 & a \ar[d] \ar@/^/[ddr] & \\
+		 b \ar[r] \ar[drr] & a \sqcup b \ar@{.>}[dr] \\
+		 & & c
+		}
+	\end{center}and universal
+	given $c, b \to c, a \to a \sqcup b$, then $a$ is a unique morphism $a \sqcup b \to c$ making everything commute.
+\end{definition}
+\begin{example}
+	Suppose I take the categories of a abelian group. Then we have
+	\[ \text{Abelian groups} \,G \stackrel{B}{\Longrightarrow} \text{Sets of set of $|G|$}\]
+	\[ \text{Free abelian groups on} \,S \stackrel{B}{\Longleftarrow} \text{Set $S$}\]
+\end{example}
+
