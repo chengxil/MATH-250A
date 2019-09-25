@@ -318,8 +318,9 @@ Extra structure is \textbf{right} action of $G$ on $S$. We now have 3 copies of 
 	Then the number of elements on center is equal to the order of $G$ therefore it has elements of order $p$ by the abelian case.
 
 \end{proof}
-\begin{definition}
-	Orbit
+\begin{definition}[Kate LaMont]
+	Consider a group $G$ that acts on $X$. The orbit of an element $x$ in $X$ is th set of elements in $X$ which $x$ can be moved by the elements of $G$. Formally, the \textit{orbit} is denoted by $G \cdot X$
+	\[ G \cdot x = \left\{ g \cdot x | g \in G \right\}\]
 \end{definition}
 \begin{example}
 	Let $G := S_3$. The orbit of $G$ are
@@ -715,28 +716,46 @@ One is a wreath product $\b Z/ 3 \b Z \wr \b Z/ 2 \b Z $.
 	A \textit{product} $a \times b$ is object with morphism 
 	\begin{center}
 		\xymatrix{
-	A \times B \ar[d] \ar[r] & B \\
-	A }
+	a \times b \ar[d] \ar[r] & a \\
+	b }
 	\end{center}
-	which is universal with this properties.
+	which is \textbf{universal} with these properties. Suppose $c$ is any object, with morphisms to $a,b$. Then there is a unique morphism $f : c \to a \times b$ making the diagram commute
+	\begin{center}
+	\xymatrix{
+	c \ar[dd] \ar[rr] \ar@{.>}[dr]^f && a \\
+	 & a \times b \ar[dl]^{\pi_b} \ar[ur]^{\pi_a} \\
+	 b
+	}	
+	\end{center}
 \end{definition}
+\begin{exercise}
+	Check usual of sets has this property.
+\end{exercise}
 \begin{remark}
-	product is not unique but it is unique up to isomorphism.
+	product is not unique but it is unique up to isomorphism. Suppose $x,y,z$ are products of $a,b$. Then get $f : X \to Y$ and $g : Y \to X$ such that they are inverses of each other, then we have
+	\xymatrix{
+		y \ar[rr] \ar[dd] \ar@/^/[ddrr]^f && b \\
+		\\
+		a && x \ar@/^/[uull]^g \ar[uu] \ar[ll] 
+	}
 \end{remark}
 \begin{definition}
-	Given $a,b$ a \textit{coproduct} $a \sqcup b$ has morphisms
+	The dual of product is codproduct. Given $a,b$ a \textit{coproduct} $a \sqcup b$ has morphisms
+	and universal
+	given $c, b \to c, a \to a \sqcup b$, then $a$ is a unique morphism $a \sqcup b \to c$ making everything commute. 
 	\begin{center}
 		\xymatrix{
-		 & a \ar[d] \ar@/^/[ddr] & \\
-		 b \ar[r] \ar[drr] & a \sqcup b \ar@{.>}[dr] \\
+		 & a \ar[d] \ar@/^/[ddr] & \\ 
+		 b \ar[r] \ar@/_/[drr] & a \sqcup b \ar@{.>}[dr] \\
 		 & & c
 		}
-	\end{center}and universal
-	given $c, b \to c, a \to a \sqcup b$, then $a$ is a unique morphism $a \sqcup b \to c$ making everything commute.
+	\end{center}
 \end{definition}
+
 \begin{example}
 	Suppose I take the categories of a abelian group. Then we have
 	\[ \text{Abelian groups} \,G \stackrel{B}{\Longrightarrow} \text{Sets of set of $|G|$}\]
 	\[ \text{Free abelian groups on} \,S \stackrel{B}{\Longleftarrow} \text{Set $S$}\]
 \end{example}
+
 
